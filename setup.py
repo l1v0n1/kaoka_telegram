@@ -7,12 +7,21 @@ import os
 import shutil
 import sys
 
+def is_ci_environment():
+    """Check if running in a CI environment"""
+    return os.environ.get('CI') == 'true' or os.environ.get('GITHUB_ACTIONS') == 'true'
+
 def setup_config():
     """Set up the configuration files"""
     print("Setting up Kaoka Telegram Bot...")
     
     # Check if config.py exists
     if os.path.exists('config.py'):
+        # In CI, skip overwriting existing files
+        if is_ci_environment():
+            print("Running in CI environment. Skipping config.py overwrite check.")
+            return
+        
         overwrite = input("config.py already exists. Overwrite? (y/n): ")
         if overwrite.lower() != 'y':
             print("Skipping config.py setup.")

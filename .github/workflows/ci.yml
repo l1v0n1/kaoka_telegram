@@ -45,5 +45,9 @@ jobs:
         python-version: '3.9'
     - name: Test setup script
       run: |
+        # Make sure config.py doesn't exist before testing
+        rm -f config.py
+        # Set CI environment variable
+        export CI=true
         python setup.py
         if [ ! -f config.py ]; then exit 1; fi 
