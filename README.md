@@ -23,7 +23,7 @@ A Telegram bot built with Python for user profiles, ratings, and interactions wi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/kaoka_telegram.git
+git clone https://github.com/l1v0n1/kaoka_telegram.git
 cd kaoka_telegram
 ```
 
